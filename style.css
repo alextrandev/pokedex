@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@0;1&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+/* universal elements */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #05112C;
+}
+
+/* main sections container */
+
+body {
+    font-family: 'Old Standard TT', serif;
+    background: #3E92CC;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background: #FFFAFF;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+header img {
+    filter: drop-shadow(0px 0px 2px #3E92CC);
+    height: 10rem;
+}
+
+header img:hover {
+    filter: drop-shadow(0px 0px 4px #D8315B)
+}
+
+main {
+    background: #FFFAFF;
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+

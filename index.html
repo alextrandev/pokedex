@@ -4,13 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Pokedex</title>
   </head>
   <body>
-    <nav>This is a nav</nav>
-    <main></main>
-    <main></main>
-    <footer></footer>
-    <script src="main.js"></script>
+    <!-- header with a big logo -->
+    <header>
+      <div>
+        <img src="assets/logo.svg" alt="Pokedex logo" />
+      </div>
+    </header>
+    <main id="pokedex_main">
+      <div class="search_bar">
+        <input type="text" id="search_input" />
+      </div>
+      <section class="pokemon_search_grid"></section>
+      <div class="tabs_select">
+        <a href="#">Previous</a>
+        <a href="#">Next</a>
+      </div>
+      <section class="pokemons_grid">
+        <div></div>
+      </section>
+      <!-- contents will be add from main.js -->
+    </main>
+    <!-- footer -->
+    <footer style="display: flex; justify-content: center">
+      <p>Pokedex by Alex Tran. Data from Pokeapi (https://pokeapi.co/)</p>
+    </footer>
   </body>
+  <script src="main.js"></script>
 </html>
