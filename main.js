@@ -1,7 +1,4 @@
 let pokemons = [];
-let previousURL = "";
-let nextURL = "";
-
 const pokemonsGrid = document.querySelector(".pokemons_grid");
 const searchGrid = document.querySelector(".pokemon_search_grid");
 const favoritesGrid = document.querySelector(".favorites_grid");
@@ -28,8 +25,7 @@ const toggleInfo = (img, infoDiv, pokemon) => {
   types.forEach((type) => typeArr.push(type.type.name));
   abilities.forEach((ability) => abilityArr.push(ability.ability.name.replace("-", " ")));
 
-  infoDiv.innerHTML = `
-  <p><b>Weight</b>: ${weight / 10} kg</p>
+  infoDiv.innerHTML = `<p><b>Weight</b>: ${weight / 10} kg</p>
   <p><b>Height</b>: ${height / 10} m</p>
   <p><b>Types</b>: ${typeArr.join(", ")}</p>
   <p><b>Abilities</b>: ${abilityArr.join(", ")}</p>`;
