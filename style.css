@@ -7,16 +7,27 @@
     margin: 0;
     box-sizing: border-box;
     color: #05112C;
+    overscroll-behavior: none;
 }
 
 /* main sections container */
 
 body {
-    font-family: 'Old Standard TT', serif;
-    background: #3E92CC;
-    max-width: 1280px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #3E92CC;
+    background-image: url(assets/pokemon_background.png);
+    max-width: 1000px;
     margin: 0 auto;
+    background-size: 200vw;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    animation: moveIt 240s linear infinite;
 }
+
+@keyframes moveIt {
+    from { background-position: bottom left; }
+    to { background-position: top right; }
+  }
 
 header {
     display: flex;
@@ -52,19 +63,47 @@ main {
 
 .grid div {
     padding: 1rem;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center; */
     display: grid;
-    grid: 7fr 1fr / 1fr 2rem;
+    grid: 7fr 1fr / 1fr 1fr;
     border-radius: 5px;
+    border: 20px solid blue;
     border: 2px dashed black;
+    align-items: center;
+    background-color: white;
+    transition: 1s ease-in-out;
+}
+
+.grid div:hover {
+    scale: 1.2;
+    transition: 1s ease-in-out;
+}
+
+/* .grid div:hover {
+    scale: 2;
+    rotate: 90deg;
+    transition: 1s ease-in-out;
+}
+
+.grid div:hover img,
+.grid div:hover h3 {
+    rotate: -90deg;
+    scale: 0.8;
+    transition: 1s ease-in-out;
+} */
+
+.grid div h3 {
+    font-size: 1.5rem;
+    text-align: start;
+}
+
+.grid div i {
+    font-size: 2rem;
+    text-align: end;
 }
 
 .grid img {
     grid-area: 1 / 1 / none / span 2;
-    max-height: 20rem;
+    height: 15vw;
     width: 100%;
     margin-bottom: 1rem;
 }
