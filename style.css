@@ -94,7 +94,7 @@ main {
     background: #FFFAFF;
     padding: 2rem;
     padding-top: 0.5rem;
-    border-radius: 0 0 1rem 1rem;
+    min-height: 100vh;
 }
 
 .grid {
@@ -154,4 +154,20 @@ info {
     text-shadow: 0 0 5px white;
     z-index: 2;
     font-size: 0.8rem;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    bottom: -0.20rem;
+    background-color: white;
+    border: 2px black;
+    border-style: dashed none none none;
+    padding: 0.2rem;
+}
+
+footer img {
+    height: 1rem;
+    margin-left: 0.5rem;
 }

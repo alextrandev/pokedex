@@ -7,7 +7,7 @@ const searchGrid = document.querySelector(".pokemon_search_grid");
 const favoritesGrid = document.querySelector(".favorites_grid");
 
 const fetchPokedex = () => {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=150")
+  fetch("https://pokeapi.co/api/v2/pokemon?limit=1500")
     .then((res) => res.json())
     .then((json) => {
       const fetches = json.results.map((pokemon) => {
