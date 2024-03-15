@@ -14,13 +14,16 @@
       <div>
         <img src="assets/logo.svg" alt="Pokedex logo" />
       </div>
+      <div>
+        <div class="search_bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search_input" />
+        </div>
+        <button id="show_all">Show all pokemons</button>
+        <button id="show_favorites">Show favorites</button>
+      </div>
     </header>
     <main id="pokedex_main">
-      <div class="search_bar">
-        <input type="text" id="search_input" />
-      </div>
-      <button id="show_all">Show all pokemons</button>
-      <button id="show_favorites">Show favorites</button>
       <section class="grid pokemon_search_grid"></section>
       <section class="grid favorites_grid"></section>
       <section class="grid pokemons_grid"></section>

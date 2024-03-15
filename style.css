@@ -31,11 +31,54 @@ body {
 
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
     background: #FFFAFF;
     padding: 0.5rem;
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 0;
     margin-top: 1rem;
+}
+
+header div {
+    padding: 1rem 2rem 0 3rem;
+}
+
+header div:last-child {
+    display: grid;
+    grid: 1fr 1fr / 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.search_bar {
+    grid-area: 1 / 1 / 1 / span 2;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.search_bar input {
+    font-size: 1.9rem;
+    border: 2px dashed black;
+    border-radius: 5px;
+}
+
+header button {
+    padding: 0.5rem;
+    border: 2px dashed black;
+    background-color: white;
+    cursor: pointer;
+    transition: 1s ease-in-out;
+    border-radius: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
+}
+
+header button:hover {
+    scale: 1.1;
+    transition: 1s ease-in-out;
 }
 
 header img {
@@ -49,9 +92,9 @@ header img:hover {
 
 main {
     background: #FFFAFF;
-    margin-top: 1rem;
     padding: 2rem;
-    border-radius: 1rem;
+    padding-top: 0.5rem;
+    border-radius: 0 0 1rem 1rem;
 }
 
 .grid {
@@ -63,47 +106,52 @@ main {
 
 .grid div {
     padding: 1rem;
+    border-radius: 5px;
+    border: 2px dashed black;
+    background-color: white;
     display: grid;
     grid: 7fr 1fr / 1fr 1fr;
-    border-radius: 5px;
-    border: 20px solid blue;
-    border: 2px dashed black;
     align-items: center;
-    background-color: white;
     transition: 1s ease-in-out;
 }
 
 .grid div:hover {
-    scale: 1.2;
+    scale: 1.1;
     transition: 1s ease-in-out;
 }
-
-/* .grid div:hover {
-    scale: 2;
-    rotate: 90deg;
-    transition: 1s ease-in-out;
-}
-
-.grid div:hover img,
-.grid div:hover h3 {
-    rotate: -90deg;
-    scale: 0.8;
-    transition: 1s ease-in-out;
-} */
 
 .grid div h3 {
     font-size: 1.5rem;
     text-align: start;
+    transition: 1s ease-in-out;
 }
 
 .grid div i {
     font-size: 2rem;
     text-align: end;
+    transition: 1s ease-in-out;
 }
 
-.grid img {
+.grid img,
+.grid info {
     grid-area: 1 / 1 / none / span 2;
     height: 15vw;
     width: 100%;
     margin-bottom: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.blur {
+    filter: grayscale(1) opacity(15%) contrast(0%);
+}
+
+info {
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.3;
+    text-shadow: 0 0 5px white;
+    z-index: 2;
+    font-size: 0.8rem;
 }

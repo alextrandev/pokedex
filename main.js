@@ -21,20 +21,41 @@ const fetchPokedex = () => {
     .catch((error) => console.log(`Error: ${error.message}`));
 };
 
+const toggleInfo = (img, infoDiv, pokemon) => {
+  const { weight: weight, height: height, types: types, abilities: abilities } = pokemon;
+  let [typeArr, abilityArr] = [[], []];
+
+  types.forEach((type) => typeArr.push(type.type.name));
+  abilities.forEach((ability) => abilityArr.push(ability.ability.name.replace("-", " ")));
+
+  infoDiv.innerHTML = `
+  <p><b>Weight</b>: ${weight / 10} kg</p>
+  <p><b>Height</b>: ${height / 10} m</p>
+  <p><b>Types</b>: ${typeArr.join(", ")}</p>
+  <p><b>Abilities</b>: ${abilityArr.join(", ")}</p>`;
+
+  img.classList.toggle("blur");
+  infoDiv.classList.toggle("hidden");
+};
+
 const displayPokemons = (pokemons, location) => {
   pokemonsGrid.innerHTML = searchGrid.innerHTML = favoritesGrid.innerHTML = "";
   for (let pokemon of pokemons) {
     const div = location.appendChild(document.createElement("div"));
     const img = div.appendChild(document.createElement("img"));
+    const infoDiv = div.appendChild(document.createElement("info"));
     const h3 = div.appendChild(document.createElement("h3"));
     const star = div.appendChild(document.createElement("i"));
 
     div.id = `div_${pokemon.name}`;
     img.src = pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.front_default ?? "assets/Poke_Ball.webp";
+    infoDiv.classList.add("hidden");
     h3.textContent = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
     star.className = localStorage.getItem(pokemon.name) === "true" ? "fa-solid fa-star" : "fa-regular fa-star";
     star.id = pokemon.name;
+
     star.addEventListener("click", toggleFavorites);
+    div.addEventListener("click", () => toggleInfo(img, infoDiv, pokemon));
   }
 };
 
