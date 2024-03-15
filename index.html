@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://kit.fontawesome.com/ec91d642f0.js" crossorigin="anonymous"></script>
     <title>Pokedex</title>
   </head>
   <body>
@@ -18,14 +19,11 @@
       <div class="search_bar">
         <input type="text" id="search_input" />
       </div>
-      <section class="pokemon_search_grid"></section>
-      <div class="tabs_select">
-        <a href="#">Previous</a>
-        <a href="#">Next</a>
-      </div>
-      <section class="pokemons_grid">
-        <div></div>
-      </section>
+      <button id="show_all">Show all pokemons</button>
+      <button id="show_favorites">Show favorites</button>
+      <section class="grid pokemon_search_grid"></section>
+      <section class="grid favorites_grid"></section>
+      <section class="grid pokemons_grid"></section>
       <!-- contents will be add from main.js -->
     </main>
     <!-- footer -->

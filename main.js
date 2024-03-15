@@ -4,41 +4,66 @@ let nextURL = "";
 
 const pokemonsGrid = document.querySelector(".pokemons_grid");
 const searchGrid = document.querySelector(".pokemon_search_grid");
+const favoritesGrid = document.querySelector(".favorites_grid");
 
-const fetchData = () => {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=100")
-    .then((response) => response.json())
+const fetchPokedex = () => {
+  fetch("https://pokeapi.co/api/v2/pokemon?limit=150")
+    .then((res) => res.json())
     .then((json) => {
-      const { next: nextURL, previous: previousURL, results: fetchedPokemons } = json;
-      pokemons.push(...fetchedPokemons);
-      displayPokemons(pokemons);
+      const fetches = json.results.map((pokemon) => {
+        return fetch(pokemon.url).then((res) => res.json());
+      });
+      Promise.all(fetches).then((data) => {
+        pokemons = data;
+        displayPokemons(pokemons, pokemonsGrid);
+      });
     })
     .catch((error) => console.log(`Error: ${error.message}`));
 };
 
-const displayPokemons = (data) => {
-  pokemonsGrid.innerHTML = "";
-  for (let pokemon of data) {
-    const div = document.createElement("div");
-    const h3 = document.createElement("h3");
+const displayPokemons = (pokemons, location) => {
+  pokemonsGrid.innerHTML = searchGrid.innerHTML = favoritesGrid.innerHTML = "";
+  for (let pokemon of pokemons) {
+    const div = location.appendChild(document.createElement("div"));
+    const img = div.appendChild(document.createElement("img"));
+    const h3 = div.appendChild(document.createElement("h3"));
+    const star = div.appendChild(document.createElement("i"));
 
-    h3.textContent = pokemon.name;
-    div.appendChild(h3);
-    pokemonsGrid.appendChild(div);
+    div.id = `div_${pokemon.name}`;
+    img.src = pokemon.sprites.other.dream_world.front_default ?? pokemon.sprites.front_default ?? "assets/Poke_Ball.webp";
+    h3.textContent = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+    star.className = localStorage.getItem(pokemon.name) === "true" ? "fa-solid fa-star" : "fa-regular fa-star";
+    star.id = pokemon.name;
+    star.addEventListener("click", toggleFavorites);
   }
 };
 
-const searchPokemon = (e) => {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=1400")
-    .then((response) => response.json())
-    .then((json) => {
-      const term = e.target.value.toLowerCase();
-      const filtered = json.results.filter((pokemon) => pokemon.name.toLowerCase().includes(term));
-      displayPokemons(filtered);
-    })
-    .catch((error) => console.log(`Error: ${error.message}`));
+const toggleFavorites = (e) => {
+  const pokemonName = e.target.id;
+  const isFavorites = localStorage.getItem(pokemonName) === "true";
+  localStorage.setItem(pokemonName, !isFavorites);
+  isFavorites ? (e.target.className = "fa-regular fa-star") : (e.target.className = "fa-solid fa-star");
+  document.querySelector(`.favorites_grid #div_${pokemonName}`)?.remove();
 };
 
-fetchData();
+// prettier-ignore
+const displayFavorite = () => displayPokemons(pokemons.filter((pokemon) => localStorage.getItem(pokemon.name) === "true"), favoritesGrid);
+
+const debounce = (func, delay) => {
+  let debounceTimer;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  };
+};
+
+// prettier-ignore
+const searchPokemon = debounce((e) => displayPokemons(pokemons.filter((pokemon) => pokemon.name.includes(e.target.value.toLowerCase())), searchGrid), 300);
+
+fetchPokedex();
 
 document.querySelector("#search_input").addEventListener("input", searchPokemon);
+document.querySelector("#show_all").addEventListener("click", () => displayPokemons(pokemons, pokemonsGrid));
+document.querySelector("#show_favorites").addEventListener("click", displayFavorite);
