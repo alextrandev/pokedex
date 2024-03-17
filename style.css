@@ -57,12 +57,14 @@ header div:last-child {
     align-items: center;
     justify-content: space-between;
     padding: 0;
+    gap: 0.5rem
 }
 
 .search_bar input {
     font-size: 1.9rem;
     border: 2px dashed black;
     border-radius: 5px;
+    width: 100%;
 }
 
 header button {
@@ -170,4 +172,52 @@ footer {
 footer img {
     height: 1rem;
     margin-left: 0.5rem;
+}
+
+@media (max-width: 950px) {
+header {
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid img,
+.grid info {
+    height: 20vw;
+}
+
+}
+
+@media (max-width: 670px) {
+.grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid img,
+.grid info {
+    height: 30vw;
+}
+}
+
+@media (max-width: 470px) {
+header img {
+    width: 90vw;
+}
+
+header div {
+    padding: 0;
+}
+
+.grid {
+    grid-template-columns: none;
+}
+
+
+.grid img,
+.grid info {
+    height: 60vw;
+}
 }
