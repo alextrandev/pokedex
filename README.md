@@ -1,5 +1,7 @@
 # Pokedex
 
+[Visit the pokedex site](https://pokedex.alextran.dev)
+
 ### About
 
 This is a web app to learn more about the wonderful world of pokemons.
