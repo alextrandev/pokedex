@@ -18,7 +18,7 @@ body {
     background-image: url(assets/pokemon_background.png);
     max-width: 1000px;
     margin: 0 auto;
-    background-size: 200vw;
+    background-size: 300%;
     background-repeat: repeat;
     background-attachment: fixed;
     animation: moveIt 240s linear infinite;
