@@ -1,6 +1,6 @@
 # Pokedex
 
-[Visit the pokedex site](https://pokedex.alextran.dev)
+[Visit the pokedex site](https://alextrandev.github.io/pokedex/)
 
 ### About
 
